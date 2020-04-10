@@ -1,0 +1,165 @@
+What is Spring AutoWiring
+
+For Dependency Injection , Spring can Use Auto Wiring
+Spring will look for the class that matches the property 
+	match by type: class or Interface
+
+Spring will inject it automatically .... hence it is autowired
+
+Autowiring Example:
+Injecting FortunrService into a CoachImplementation
+Spring will scan @Componets
+AnyOne Implements FortuneService Interface ??
+If, so Inject them. For e.g. Happy Fortune Services  
+
+Autowiring Injection Type
+Constructor Injection
+Setter Injection
+Field Injection
+
+Development Process Constructor Injection:
+
+I: Define the Dependency Class or Interface
+		
+		public interface FortuneService(){
+				public String getFortune();
+		}
+		
+		public class HappyFortuneService implements FortuneService{
+		   
+		   @Override
+		   public String getFortune(){
+		   		return "Please get me a Fortune";
+		   }
+		}
+		
+II: Create a constructor in tour class for Injection
+
+@Component
+public class TennisClass implements Coach{
+
+		private FortuneService fortuneService;
+ 		
+ 		@Autowired
+		TennisClass(FortuneService fortuneService){
+		this.fortuneService = fortuneService
+		}
+		   
+		  
+		}
+		
+III: Configure the Dependency Injection with @Autowired Annotation
+Note: Spring will scan for components that Implements Fortune Interface 
+
+
+FAQ: What if there are multiple FortuneService implementations?
+
+When using autowiring, what if there are multiple FortuneService implementations? Like in the image below?
+
+
+
+ANSWER
+
+Spring has special support to handle this case. Use the @Qualifier annotation. We'll cover this later in the course with slides and code examples. But don't worry, we will address all scenarios :-)
+
+
+======================================================Setter Injection =========================================
+Development Process Constructor Injection:
+
+I: Define the Dependency Class or Interface
+		
+		public interface FortuneService(){
+				public String getFortune();
+		}
+		
+		public class HappyFortuneService implements FortuneService{
+		   
+		   @Override
+		   public String getFortune(){
+		   		return "Please get me a Fortune";
+		   }
+		}
+		
+II: Create a setter Methord in tour class for Injection
+
+@Component
+public class TennisClass implements Coach{
+
+		private FortuneService fortuneService;
+ 		
+ 		//Getter and setter for the fortuneService
+ 		@aurowire the setter methord
+		   
+		  
+		}
+		
+III: Configure the Dependency Injection with @Autowired Annotation
+
+======================================================Metod Injection =========================================
+Development Process Constructor Injection:
+
+I: Define the Dependency Class or Interface
+		
+		public interface FortuneService(){
+				public String getFortune();
+		}
+		
+		public class HappyFortuneService implements FortuneService{
+		   
+		   @Override
+		   public String getFortune(){
+		   		return "Please get me a Fortune";
+		   }
+		}
+		
+II: Create a setter Methord in tour class for Injection
+
+@Component
+public class TennisClass implements Coach{
+
+		private FortuneService fortuneService;
+ 		
+ 		@Autowired
+ 		String getingFortune(FortuneService fortuneService){
+ 			this.fortuneService = fortuneService;
+ 		   //Some code
+ 		}
+		   
+		  
+		}
+		
+III: Configure the Dependency Injection with @Autowired Annotation
+
+====================================================== Field Injection =========================================
+Development Process Constructor Injection:
+
+I: Define the Dependency Class or Interface
+		
+		public interface FortuneService(){
+				public String getFortune();
+		}
+		
+		public class HappyFortuneService implements FortuneService{
+		   
+		   @Override
+		   public String getFortune(){
+		   		return "Please get me a Fortune";
+		   }
+		}
+		
+II: Create a setter Methord in tour class for Injection
+
+@Component
+public class TennisClass implements Coach{
+
+		@Autowired
+		private FortuneService fortuneService;
+ 		
+ 		
+		   
+		  
+		}
+		
+III: Configure the Dependency Injection with @Autowired Annotation
+
+@Qualifier("happyFortuneService")

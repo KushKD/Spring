@@ -1,0 +1,42 @@
+Spring Configuration with Annotation
+XML configuation can be verbose
+Configure your Spring beans with Annotation
+Annotation minimise the XML Configuration
+
+Scanning for Component Classes
+Spring will scan your java classes for special annotations
+Automatically register hte beans in the spring container
+
+Development Process
+Step:I 
+Enable componebt Scanning in Spring Configuration File
+<beans  context:componet-scan base-package="com.kushkumardhawan.springdemo"/>
+
+Step:II
+Add @Componet Annotation in your JAVA class
+@Componet("theBaseballCoach")   theBaseballCoach is the beanID
+
+Retreave bean from Spring Container
+Coach coach = context.getBean("theBaseballCoach",Coach.class);
+
+=======================================
+Using Components in the Default bean Id
+
+Spring also supports default Bean ID 
+Default bean ID =  class name, make first letter lower case
+
+@Component
+class TennisCoach implements Coach(){ ... }  
+Coach coach = context.getBean("tennisCoach",Coach.class);
+
+Practice Activity #4 - Inversion of Control with Java Annotations
+
+Define a new Coach implementation using Annotations
+Reference the new coach implementation in your main application.
+Test your application to verify you are getting information from your new coach implementation.
+ 
+
+Compare your code to the solution. The solution is available here:
+- http://www.luv2code.com/downloads/udemy-spring-hibernate/solution-practice-activities.zip
+
+

@@ -1,0 +1,55 @@
+Bean Scopes:
+
+Bean Scope reffers to a life cycle of a bean
+How long does the bean will live
+How many Instances are created
+How is the bean shared
+
+What is a Singleton scope="singleton"
+Spring Container Creats only One instance of the bean, by default
+It is cached in memory
+
+All request for the bean
+  will return a shared reference to the same bean 
+  
+  singleton == creates a single shared instance of the bean. Default Scope
+  prototype == Creates a new bean instance for each container request
+  request   == scoped to HTTP Web request (WEB ONLY)
+  session   == Scoped to HTP WEB Sessions (WEB ONLY)
+  globle-session == SCOPED TO FLOBLE HTTP WEB SESSIONS (WEB ONLY)
+  
+  Bean Lifecycles
+  container started --> beans Instantiated --> Dependencies Injected -->Internal Spring Processing -->Custom INIT methord 
+  (Bean is ready for use,Container is hut down, use custom dystroy method, Stop)
+  
+  Bean Life Cycles Methords/Hooks
+  You can add custom code during bean initialization
+  calling custom business logic methords
+  setting up hangles to resources (db,sockets,files,etc)
+  
+  You can add custom code during bean distrution
+  calling custom business logic methord
+  clean up handles to resources (db,sockets,files,etc)
+  
+  INIT methord
+  <bean 
+   init-methord="initializeThings"
+    destroy-methord="initializeThings"
+  />
+  
+  <bean>
+  Special Note about init and destroy Method Signatures
+
+When using XML configuration, I want to provide additional details regarding the method signatures of the init-method  and destroy-method .
+
+Access modifier
+The method can have any access modifier (public, protected, private)
+
+Return type
+The method can have any return type. However, "void' is most commonly used. If you give a return type just note that you will not be able to capture the return value. As a result, "void" is commonly used.
+
+Method name
+The method can have any method name.
+
+Arguments
+The method can not accept any arguments. The method should be no-arg.

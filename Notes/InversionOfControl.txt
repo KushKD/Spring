@@ -1,0 +1,74 @@
+#https://repo.spring.io/release/org/springframework/spring/5.0.2.RELEASE/
+The approach of out sourcing the construction and management of objects
+
+
+						Give me a coach object
+		My App ------------------------------------------->  OBJECT FACTORY (Spring)
+			   <-------------------------------------------    ||
+		   													   ||
+		   													   ||
+		   													   ||
+		   													   ||
+		   													 CONFIGURATION
+		   													  |		|	   |
+		   													  |		|	   |
+		   													  | 	|	   |
+		   													Hocky  Cricket   Baseball 
+		   													Coach  Coach      Coach
+		   													  
+
+Primary Functions of Spring Containers:
+ Create and Manage Objects (Inversion of Control)
+ Inject Objects Dependencies (Dependency  Injection)
+ 
+Configuring Spring Containers
+XML Configuration File (Legacy, but most legacy apps still use this)
+Java Annotations (Modern)
+Java Source Code (Modren)
+
+
+Spring Development Process
+Configure your Spring Beans
+Create a Spring Container
+Retrieve spring Beans From Spring Container
+
+Step I;
+Configure Your Spring Beans  ApplicationContext.xml
+<beans>
+	<bean id="myCoach"
+		  class="com.kushkumardhawan.springdemo.BaseballCoach"   </bean>   //fully qualified name of class
+</beans>
+
+Step II:
+Create a Spring Container
+Spring Container is generally known as application context
+Specialized Implementations: 
+								ClassPathXMLApplicationContext
+								AnnotationConfigApplicationContext
+								GenericWebApplicationContext
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+
+
+Step III:
+Retrieve Bean From a Container
+//Create a Spring Container
+ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+//Retrieve an Object
+Coach theCoach = context.getBean("myCoach",Coach.class);  i.e. beanId , Interface Name
+
+SPRING BEAN
+
+A "Spring Bean" is simply a Java object.
+
+When Java objects are created by the Spring Container, then Spring refers to them as "Spring Beans".
+
+Spring Beans are created from normal Java classes .... just like Java objects.
+
+
+
+
+
+
+
+ 			
+		   													   
