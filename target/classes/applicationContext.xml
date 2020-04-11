@@ -7,6 +7,9 @@
   
 
 	<context:component-scan base-package="Banks"></context:component-scan>
+	
+	<!-- Nessesary -->
+	<context:annotation-config></context:annotation-config>
 
 	<!--   <bean id="obc" class="Banks.OBC">
 		<property name="obcServices" ref="services"></property>
