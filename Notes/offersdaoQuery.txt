@@ -1,0 +1,17 @@
+CREATE TABLE offers (
+	id serial,
+	name varchar(25),
+	email varchar (25),
+	location varchar(50)
+	
+);
+
+INSERT INTO offers (name,email,location) VALUES('Kush Kumar Dhawan','ksuhkumardhawan@gmail.com','Shimla');
+INSERT INTO offers (name,email,location) VALUES('Luv Kumar Dhawan','luvkumardhawan@gmail.com','Shimla');
+INSERT INTO offers (name,email,location) VALUES('Mayank Kumar Dhawan','mayank.saint@gmail.com','Shimla');
+
+SELECT * FROM offers;
+
+DELETE from  offers WHERE id =4 
+
+select offers0_.id as id1_1_, offers0_.email as email2_1_, offers0_.location as location3_1_, offers0_.name as name4_1_ from offers offers0_

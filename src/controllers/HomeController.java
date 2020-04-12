@@ -19,6 +19,7 @@ import dao.Customer;
 import dao.OfferDao;
 import dao.OfferDaoImpl;
 import dao.Offers;
+import model.Offer;
 
 @Controller 
 public class HomeController {
@@ -54,11 +55,12 @@ public class HomeController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/create" )
 	public String createHome(Model mv) {
+		mv.addAttribute("offer", new Offers());
 		return "createOffer";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/createOffer" )
-	public String createOffer(Model mv, @Valid Offers offer , BindingResult result ) {
+	public String createOffer(Model mv, @Valid Offer offer , BindingResult result ) {
 		System.out.println(offer.toString());
 		
 		if(result.hasErrors()) {
@@ -66,12 +68,15 @@ public class HomeController {
 			List<ObjectError> errors = result.getAllErrors();
 			for (ObjectError objectError : errors) {
 				System.out.println(objectError);
+				
 			}
-		}else {
-			System.out.println("Form Validated");
+			return "createOffer";
 		}
+		//Save the code goes here
+		//Set form to Bean
+		//Save bean to hibernate
 		
-		return "createOffer";
+		return "offerCreated";
 	}
 	
 	
