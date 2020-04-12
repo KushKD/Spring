@@ -13,8 +13,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-
-import model.Customer;
 import model.Person;
 
 public class App {
@@ -30,31 +28,31 @@ public class App {
 		System.out.println(person.getUsername() + " Hi!");
 		System.out.println(person.getPassword());
 		
-		SessionFactory sessionfactory =  person.getSessionFactory();
-		Session session = sessionfactory.openSession();
-		
-		
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<Customer> criteria = builder.createQuery(Customer.class);
-		criteria.from(Customer.class);
-	        
-		List<Customer> customers = session.createQuery(criteria).getResultList();
-	        
-	        for(Customer customer : customers ) { 
-	        	System.out.println(customer.getCutomer_id()+","+
-	        			customer.getCompanyName()+","+
-	        			customer.getContactName()+","+
-	        			customer.getContactTitle()+","+
-	        			customer.getAddress()+","+
-	        			customer.getCity()+","+
-	        			customer.getPostalcode()+","+
-	        			customer.getPhone()+","+
-	        			customer.getFax()+","+
-	        			customer.getCountry()+",");
-	        }
-	        System.out.println(" Size:  "+ customers.size());
-	        
-	        session.close();
+		//SessionFactory sessionfactory =  person.getSessionFactory();
+//		Session session = sessionfactory.openSession();
+//		
+//		
+//		CriteriaBuilder builder = session.getCriteriaBuilder();
+//		CriteriaQuery<dao.Customer> criteria = builder.createQuery(Customer.class);
+//		criteria.from(Customer.class);
+//	        
+//		List<Customer> customers = session.createQuery(criteria).getResultList();
+//	        
+//	        for(Customer customer : customers ) { 
+//	        	System.out.println(customer.getCutomer_id()+","+
+//	        			customer.getCompanyName()+","+
+//	        			customer.getContactName()+","+
+//	        			customer.getContactTitle()+","+
+//	        			customer.getAddress()+","+
+//	        			customer.getCity()+","+
+//	        			customer.getPostalcode()+","+
+//	        			customer.getPhone()+","+
+//	        			customer.getFax()+","+
+//	        			customer.getCountry()+",");
+//	        }
+//	        System.out.println(" Size:  "+ customers.size());
+//	        
+//	        session.close();
 //		
 //		
 //		//Close the Application Context
