@@ -58,16 +58,16 @@ public class OfferDaoImpl implements  OfferDao {
 	}
 
 	@Override
-	public List<Customer> getOffers() {
+	public List<Offers> getOffers() {
 		Session session = sessionFactory.openSession();
 		
 		
 		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<Customer> criteria = builder.createQuery(Customer.class);
-		criteria.from(Customer.class);
+		CriteriaQuery<Offers> criteria = builder.createQuery(Offers.class);
+		criteria.from(Offers.class);
 	        
-		List<Customer> customers = session.createQuery(criteria).getResultList();
-		return customers;
+		List<Offers> offers = session.createQuery(criteria).getResultList();
+		return offers;
 	}
 	
 	

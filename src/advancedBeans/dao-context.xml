@@ -43,6 +43,7 @@
 <!-- 				<prop key="hibernate.hbm2ddl.auto">create </prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				 <!-- <prop key="hibernate.hbm2ddl.auto">upd</prop> -->
 				 
 				<!-- <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_second_level_cache">true</prop>

@@ -6,6 +6,6 @@ import model.Offer;
 
 public interface OfferDao {
 	
-	List<Customer> getOffers();
+	List<Offers> getOffers();
 
 }

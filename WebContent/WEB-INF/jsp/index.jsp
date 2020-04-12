@@ -15,6 +15,11 @@
 Session:- <%= request.getAttribute("name") %>
 
 <c:out value="${name}"></c:out>
+<br>
+<a href="${pageContext.request.contextPath}/show">SHOW Offers</a>
+
+<br>
+<a href="${pageContext.request.contextPath}/create">Create Offer</a>
 
 
 </body>

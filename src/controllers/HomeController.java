@@ -4,9 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.Customer;
 import dao.OfferDao;
 import dao.OfferDaoImpl;
+import dao.Offers;
 
 @Controller 
 public class HomeController {
@@ -21,40 +26,54 @@ public class HomeController {
 	@Autowired
 	OfferDaoImpl offerDao;
 	
-	
-	
-//	@RequestMapping(method = RequestMethod.GET, value = "/" )
-//	public String showHome(HttpSession session ) {
-//		session.setAttribute("name", "kush from Controlller");
-//		return "index";
-//	}
-	
-	
 	public OfferDao getOfferDao() {
 		return offerDao;
 	}
-
-
 
 	public void setOfferDao(OfferDaoImpl offerDao) {
 		this.offerDao = offerDao;
 	}
 
 
-
-	@RequestMapping(method = RequestMethod.GET, value = "/" )
-	public ModelAndView showHome() {
+	@RequestMapping(method = RequestMethod.GET, value = "/show" )
+	public String showHome(Model mv) {
 		
-		ModelAndView mv = new ModelAndView("index");  //the view which we want to display
 		
-		List<Customer> list = offerDao.getOffers();
-		System.out.println(" Size:  "+ list.size());
+		List<Offers> list = offerDao.getOffers();
+		mv.addAttribute("offers", list);
 		
-		Map<String,Object> model = mv.getModel();
-		model.put("name", "River Kush");
-		
-		return mv;
+		return "showOffers";
 	}
+	
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/" )
+	public String showHome(HttpSession session ) {
+		session.setAttribute("name", "kush from Controlller");
+		return "index";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/create" )
+	public String createHome(Model mv) {
+		return "createOffer";
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/createOffer" )
+	public String createOffer(Model mv, @Valid Offers offer , BindingResult result ) {
+		System.out.println(offer.toString());
+		
+		if(result.hasErrors()) {
+			System.out.println("Form does not Validate");
+			List<ObjectError> errors = result.getAllErrors();
+			for (ObjectError objectError : errors) {
+				System.out.println(objectError);
+			}
+		}else {
+			System.out.println("Form Validated");
+		}
+		
+		return "createOffer";
+	}
+	
 	
 
 }
