@@ -5,19 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name="offers")
 public class Offers {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "offers_id_seq")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "offers_id_seq")
+	@GeneratedValue(generator="offers_id_seq",strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="offers_id_seq",sequenceName="public.offers_id_seq", initialValue = 1, allocationSize = 1)
 	@Column(name="id")
 	private Integer id;
 	

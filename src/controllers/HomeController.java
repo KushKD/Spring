@@ -75,7 +75,8 @@ public class HomeController {
 		//Save the code goes here
 		//Set form to Bean
 		//Save bean to hibernate
-		
+		offerDao.saveOffer(offer);
+		//mv.addAttribute("ID", id);
 		return "offerCreated";
 	}
 	

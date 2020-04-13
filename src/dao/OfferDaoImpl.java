@@ -69,6 +69,21 @@ public class OfferDaoImpl implements  OfferDao {
 		List<Offers> offers = session.createQuery(criteria).getResultList();
 		return offers;
 	}
+
+	@Override
+	public void saveOffer(Offer offer) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Offers offers = new Offers();
+		offers.setEmail(offer.getEmail());
+		offers.setLocation(offer.getLocation());
+		offers.setName(offer.getName());
+		session.save(offers);
+		session.getTransaction().commit();
+		session.close();
+		
+		
+	}
 	
 	
 

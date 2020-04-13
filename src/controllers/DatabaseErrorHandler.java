@@ -20,7 +20,7 @@ public class DatabaseErrorHandler {
 	   // logger.error("Request: " + req.getRequestURL() + " raised " + ex);
 
 	    ModelAndView mav = new ModelAndView();
-	    mav.addObject("exception", ex);
+	    mav.addObject("exception", ex.getLocalizedMessage());
 	    mav.addObject("url", req.getRequestURL());
 	    mav.setViewName("error");
 	    return mav;
