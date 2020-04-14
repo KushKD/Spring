@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import dao.Customer;
 import dao.OfferDao;
 import dao.OfferDaoImpl;
-import dao.Offers;
+import entities.Customer;
+import entities.Offers;
 import model.Offer;
 
 @Controller 
