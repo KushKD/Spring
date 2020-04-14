@@ -6,9 +6,9 @@
 
 <body>
 
-<c:if test="${param.error != null}">
+ <c:if test="${param.error != null}">
 <p>Login Failed</p>
-</c:if>
+</c:if> 
 
 
 	<form class="form-signin" method="post"  action="${pageContext.request.contextPath}/login">

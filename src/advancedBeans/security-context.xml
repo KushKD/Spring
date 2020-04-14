@@ -25,7 +25,7 @@
 				authorities-by-username-query='SELECT users.username , roles.rname as role  FROM bo_user as users   INNER JOIN bo_roles as roles ON roles.u_id = users.uid WHERE users.username = ?' 
 				
 				
-				users-by-username-query="select username , CONCAT('{noop}',password ) from bo_user where username=? " />
+				users-by-username-query="select username ,password, isactive  from bo_user where username = ? " />
 			<security:password-encoder ref="passwordEncoder"
 				hash="bcrypt" />
 		</security:authentication-provider>
@@ -34,27 +34,19 @@
 
 	
 	<security:http use-expressions="true">
-		<security:intercept-url access="permitAll"
-			pattern="/" />
-			<security:intercept-url access="permitAll"
-			pattern="/login" />
-			<security:intercept-url access="isAuthenticated()"
-			pattern="/create" />
-			<security:intercept-url access="isAuthenticated()"
-			pattern="/show" />
-			<security:intercept-url access="isAuthenticated()"
-			pattern="/createOffer" />
-			<security:intercept-url access="permitAll"
-			pattern="/static/**" />
-		<security:intercept-url access="denyAll"
-			pattern="/**" />
+		<security:intercept-url access="permitAll" pattern="/" />
+			<security:intercept-url access="permitAll" pattern="/login" />
+			<security:intercept-url access="isAuthenticated()" pattern="/create" />
+			<security:intercept-url access="isAuthenticated()" pattern="/show" />
+			<security:intercept-url access="isAuthenticated()" pattern="/createOffer" />
+			<security:intercept-url access="permitAll" pattern="/static/**" />
+		<security:intercept-url access="denyAll" pattern="/**" />
+
 		<security:form-login login-page="/login"
-			authentication-failure-url="/login?error=true" />
+			authentication-failure-url="/login?error" />
 	</security:http>
-	<!-- <bean id="passwordEncoder"
-		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-	</bean> -->
+
 	<bean id="passwordEncoder"
-		class="org.springframework.security.crypto.password.StandardPasswordEncoder">
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 	</bean>
 </beans>
