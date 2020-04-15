@@ -9,9 +9,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import entities.Offers;
+import entities.Roles;
+import entities.User;
 import model.Offer;
 
 @Component
@@ -25,6 +28,20 @@ public class OfferDaoImpl implements  OfferDao {
 	@Value("${jdbc.password}")
 	private String password;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	
+	
+	
+	public BCryptPasswordEncoder getPasswordEncoder() {
+		return passwordEncoder;
+	}
+
+	public void setPasswordEncoder(BCryptPasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+	}
+
 	@Autowired
 	private SessionFactory  sessionFactory;
 	
@@ -83,6 +100,29 @@ public class OfferDaoImpl implements  OfferDao {
 		session.getTransaction().commit();
 		session.close();
 		
+		
+	}
+
+	@Override
+	public void saveUser(User user, Roles roles) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		String password =passwordEncoder.encode(user.getPassword());
+		user.setPassword(password);
+		
+		
+		Integer id = (Integer) session.save(user);
+		user.setU_id(id);
+		roles.setUser(user);
+		System.out.println(roles);
+		System.out.println(password);
+		session.save(roles);
+			
+			//Save Roles here
+		session.getTransaction().commit();
+		session.close();
 		
 	}
 	

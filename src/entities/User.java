@@ -1,15 +1,17 @@
 package entities;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -21,7 +23,7 @@ public class User {
 	
 	@Column(name="uid")
 	@GeneratedValue(generator="bo_user_uid_seq",strategy=GenerationType.AUTO)
-	@SequenceGenerator(name="bo_user_uid_seq",sequenceName="public.bo_user_uid_seq", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(name="bo_user_uid_seq",sequenceName="public.bo_user_uid_seq",  allocationSize = 1)
 	@Id
 	private Integer u_id;
 	
@@ -48,9 +50,11 @@ public class User {
 	
 	@Column(name="isActive", columnDefinition = "BOOLEAN DEFAULT false")
 	private Boolean isActive;
-//	
-//	@OneToMany(mappedBy = "rollId", cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    private List<Roles> roles = new ArrayList<Roles>();
+	
+	@OneToMany(mappedBy = "user" )
+	private List<Roles> role ;
+
+	
 
 	public User() {
 		super();
@@ -58,11 +62,27 @@ public class User {
 		System.out.println("bo_User Table Created ");
 	}
 
+	
+	
+	
+
 	@Override
 	public String toString() {
 		return "User [u_id=" + u_id + ", name=" + name + ", address=" + address + ", email=" + email + ", phone="
 				+ phone + ", username=" + username + ", password=" + password + ", created_date=" + created_date
-				+ ", isActive=" + isActive + "]";
+				+ ", isActive=" + isActive + ", role=" + role + "]";
+	}
+
+
+
+
+
+	public List<Roles> getRole() {
+		return role;
+	}
+
+	public void setRole(List<Roles> role) {
+		this.role = role;
 	}
 
 	public Integer getU_id() {
@@ -122,7 +142,7 @@ public class User {
 	}
 
 	public Date getCreated_date() {
-		return created_date;
+		return created_date; 
 	}
 
 	public void setCreated_date(Date created_date) {

@@ -1,5 +1,8 @@
 package controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,15 +14,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.OfferDao;
 import dao.OfferDaoImpl;
+import entities.Address;
 import entities.Customer;
+import entities.Name;
 import entities.Offers;
+import entities.Roles;
+import entities.User;
 import model.Offer;
+import model.UserPojo;
 
 @Controller 
 public class HomeController {
@@ -55,7 +64,7 @@ public class HomeController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/create" )
 	public String createHome(Model mv) {
-		mv.addAttribute("offer", new Offers());
+		mv.addAttribute("offer", new Offer());
 		return "createOffer";
 	}
 	
@@ -78,6 +87,67 @@ public class HomeController {
 		offerDao.saveOffer(offer);
 		//mv.addAttribute("ID", id);
 		return "offerCreated";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/register" )
+	public String createUserReg(Model mv) {
+		mv.addAttribute("userpojo", new UserPojo());
+		return "createUser";
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/createUser" )
+	public String createUser(Model mv, @Valid @ModelAttribute("userpojo") UserPojo userpojo , BindingResult result ) throws ParseException {
+		
+		userpojo.setCreatedDate("15-04-2020");
+		userpojo.setIsactive(true);
+		
+		System.out.println(userpojo.toString());
+		
+		if(result.hasErrors()) {
+			System.out.println("Form does not Validate");
+			List<ObjectError> errors = result.getAllErrors();
+			for (ObjectError objectError : errors) {
+				System.out.println(objectError);
+				
+			}
+			return "createUser";
+		}
+		
+		User user = new User();
+		Name  name = new Name();
+		name.setFirstName(userpojo.getFirstname());
+		name.setLastName(userpojo.getLastname());
+		name.setMiddleName(userpojo.getMiddlename());
+		user.setName(name);
+		Address address = new Address();
+		address.setAddress(userpojo.getAddress());
+		address.setCity(userpojo.getCity());
+		address.setDistrict(userpojo.getDistrict());
+		address.setState(userpojo.getState());
+		user.setAddress(address);
+		
+		user.setCreated_date(modifyDateLayout(userpojo.getCreatedDate()));
+		user.setIsActive(userpojo.getIsactive());
+		user.setUsername(userpojo.getUsername());
+		user.setPassword(userpojo.getPasword());
+		
+		Roles roles = new Roles();
+		roles.setCreatedDate(modifyDateLayout(userpojo.getCreatedDate()));  
+		roles.setRollDescription(userpojo.getRole_description());
+		roles.setRollName(userpojo.getRol_name());
+		
+		
+		offerDao.saveUser(user, roles); 
+		
+	
+		
+		return "userCreated";
+	}
+	
+	Date modifyDateLayout(String inputDate) throws ParseException{
+	    Date date = new SimpleDateFormat("dd-MM-yyyy").parse(inputDate);
+	    return date;
 	}
 	
 	

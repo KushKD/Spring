@@ -36,6 +36,9 @@
 	<security:http use-expressions="true">
 		<security:intercept-url access="permitAll" pattern="/" />
 			<security:intercept-url access="permitAll" pattern="/login" />
+			<security:intercept-url access="permitAll" pattern="/createUser" />
+			<security:intercept-url access="permitAll" pattern="/userCreated" />
+			<security:intercept-url access="permitAll" pattern="/register" />
 			<security:intercept-url access="isAuthenticated()" pattern="/create" />
 			<security:intercept-url access="isAuthenticated()" pattern="/show" />
 			<security:intercept-url access="isAuthenticated()" pattern="/createOffer" />

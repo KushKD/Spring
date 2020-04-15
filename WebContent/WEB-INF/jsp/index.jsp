@@ -21,6 +21,9 @@ Session:- <%= request.getAttribute("name") %>
 <br>
 <a href="${pageContext.request.contextPath}/create">Create Offer</a>
 
+<br>
+<a href="${pageContext.request.contextPath}/register">Register Yourself </a>
+
 
 </body>
 </html>

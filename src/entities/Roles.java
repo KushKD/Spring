@@ -1,6 +1,6 @@
 package entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,7 +24,7 @@ public class Roles {
 	
 	@Column(name="rid")
 	@GeneratedValue(generator="bo_roles_rid_seq",strategy=GenerationType.AUTO)
-	@SequenceGenerator(name="bo_roles_rid_seq",sequenceName="public.bo_roles_rid_seq", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(name="bo_roles_rid_seq",sequenceName="public.bo_roles_rid_seq", allocationSize = 1)
 	@Id
 	private Integer rollId;
 	
@@ -40,16 +40,47 @@ public class Roles {
 	@Column(name="createdDate")
 	private Date createdDate;
 	
-	@ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	//@Fetch(FetchMode.SUBSELECT)
-	@JoinColumn(name = "u_id", updatable = false, insertable = false)
-	private List<User> user ;
+	
+	
+	 @ManyToOne
+		@JoinColumn(name="u_id", nullable=false)
+		private User user;
+	
 
 	public Roles() {
 		super();
 		// TODO Auto-generated constructor stub
 		System.out.println("Roles Table Created");
 	}
+
+	
+	
+	
+	
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+
+
+
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
+
+
+
+
 
 	public Integer getRollId() {
 		return rollId;
@@ -91,12 +122,21 @@ public class Roles {
 		this.createdDate = createdDate;
 	}
 
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Roles [rollId=" + rollId + ", rollName=" + rollName + ", rollDescription=" + rollDescription
-				+ ", isActive=" + isActive + ", createdDate=" + createdDate + "]";
+				+ ", isActive=" + isActive + ", createdDate=" + createdDate + ", user=" + user + "]";
 	}
-	
+
+
+
 	
 	
 
