@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,8 +14,8 @@ public class UserPojo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1420638993029441458L;
 	
-	@NotNull
-	@Size(min = 5, max = 20, message = "Please enter valid Username")
+	//@NotBlank(message = "Username cannot be blank")
+	@Size(min = 5, max = 20)
 	private String username;
 	
 	@NotNull

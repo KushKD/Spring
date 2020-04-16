@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"  %>  
 	<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>  
+	   <%@ taglib prefix="format" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,8 @@
 <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
+<format:message key="UnmachedPasswords.user.password" />
+<format:message key="MatchedPasswords.user.passwords" />
 <P>Register YourSelf</P>
 <!-- modelAttribute="userPojo" -->
 

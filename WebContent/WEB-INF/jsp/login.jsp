@@ -23,11 +23,10 @@
 				type="password" id="password" name="password" class="form-control"
 				placeholder="Password" required>
 		</p>
-		<input type="hidden"
-    name="${_csrf.parameterName}"
-    value="${_csrf.token}"/>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-			in</button>
+	
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		 <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+	 
 	</form>
 </body>
 </html>

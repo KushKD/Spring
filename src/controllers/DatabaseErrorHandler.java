@@ -3,6 +3,7 @@ package controllers;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +25,12 @@ public class DatabaseErrorHandler {
 	    mav.addObject("url", req.getRequestURL());
 	    mav.setViewName("error");
 	    return mav;
+	  }
+	 
+	 @ExceptionHandler(AccessDeniedException.class)
+	  public String handleAccessDeinedError(HttpServletRequest req, Exception ex) {
+	  
+	    return "denied";
 	  }
 	
 

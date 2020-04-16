@@ -55,6 +55,21 @@ public class HomeController {
 		return "showOffers";
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "/root" )
+	public String showRoot(Model mv) {
+	
+		
+		return "root";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/admin" )
+	public String showAdmin(Model mv) {
+	
+		
+		return "admin";
+	}
+	
+	
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/" )
 	public String showHome(HttpSession session ) {
@@ -113,7 +128,7 @@ public class HomeController {
 			}
 			return "createUser";
 		}
-		
+		//result.rejectValue("username", "DuplicatKey.userpojo.username");
 		User user = new User();
 		Name  name = new Name();
 		name.setFirstName(userpojo.getFirstname());

@@ -12,4 +12,10 @@ public class LoginController {
 		System.out.println("We are Here");		
 		return "login";
 	}
+	
+	@RequestMapping(value="/logout", method = RequestMethod.GET) 
+	public String showLogout() {
+		System.out.println("We are Here in Logout");		
+		return "loggedout";
+	}
 }
