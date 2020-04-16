@@ -89,7 +89,7 @@ public class OfferDaoImpl implements  OfferDao {
 	}
 
 	@Override
-	public void saveOffer(Offer offer) {
+	public boolean saveOffer(Offer offer) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Offers offers = new Offers();
@@ -99,6 +99,11 @@ public class OfferDaoImpl implements  OfferDao {
 		session.save(offers);
 		session.getTransaction().commit();
 		session.close();
+		if(offers.getId()!=null) {
+			return true;
+		}else {
+			return false;
+		}
 		
 		
 	}

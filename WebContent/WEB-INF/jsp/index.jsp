@@ -3,13 +3,7 @@
 	<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"  %>  
 	<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Kush Kumar dhawan</title>
-</head>
-<body>
-<P>Kush Kumar dhawan inside JSP Folder</P>
+
 
 <%-- Session:- <%= session.getAttribute("name") %> --%>
 
@@ -39,17 +33,7 @@ Session:- <%= request.getAttribute("name") %>
 
 <br>
 </security:authorize>
-<security:authorize access="isAuthenticated()">
-<p>
-<a href="${pageContext.request.contextPath}/logout"> Logout </a>
-</p>
-</security:authorize> 
 
-<security:authorize access="!isAuthenticated()">
-<p>
-<a href="${pageContext.request.contextPath}/login"> Login </a>
-</p>
-</security:authorize> 
 
 
 </body>

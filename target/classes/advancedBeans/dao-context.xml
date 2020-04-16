@@ -16,7 +16,8 @@
 	
 	<context:property-placeholder location="classpath:/properties/jdbc.properties"  />
 
-	
+<!-- Production Environment -->
+	<beans profile="production">
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -69,4 +70,6 @@
 	
 	
 	 <tx:annotation-driven transaction-manager="transactionManager" /> 
+	 
+	 </beans>
 </beans>

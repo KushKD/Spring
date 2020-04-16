@@ -34,6 +34,17 @@ public class Offers {
 		
 		System.out.println("Offfers Bean Created");
 	}
+	
+	
+
+	public Offers(String name, String email, String location) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.location = location;
+	}
+
+
 
 	public Integer getId() {
 		return id;

@@ -2,14 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"  %>  
 	<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" >
-<title>Kush Kumar dhawan</title>
-</head>
-<body>
+
 <P>Offer will be created here</P>
 
 
@@ -22,9 +15,3 @@
 </table>
 </sf:form>
 
-
-
-
-
-</body>
-</html>

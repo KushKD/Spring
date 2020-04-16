@@ -10,7 +10,7 @@ import model.Offer;
 public interface OfferDao {
 	
 	List<Offers> getOffers();
-	void saveOffer(Offer offer);
+	boolean saveOffer(Offer offer);
 	void saveUser(User user, Roles roles);
 
 }

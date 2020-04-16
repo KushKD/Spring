@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,8 @@ import model.UserPojo;
 
 @Controller 
 public class HomeController {
+	
+	private static Logger logger = Logger.getLogger(HomeController.class);
 	
 	@Autowired
 	OfferDaoImpl offerDao;
@@ -65,7 +68,7 @@ public class HomeController {
 	@RequestMapping(method = RequestMethod.GET, value = "/admin" )
 	public String showAdmin(Model mv) {
 	
-		
+		logger.debug("Show the Admin PAfe . We are Inside teh Home Controller");
 		return "admin";
 	}
 	
@@ -73,6 +76,7 @@ public class HomeController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/" )
 	public String showHome(HttpSession session ) {
+		logger.debug("Show the MAin PAge . We are Inside teh Home Controller");
 		session.setAttribute("name", "kush from Controlller");
 		return "index";
 	}

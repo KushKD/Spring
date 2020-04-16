@@ -6,6 +6,8 @@ import javax.validation.constraints.Size;
 
 public class Offer {
 	
+	
+	
 	private int id;
 	@Size(min = 5, max = 25 , message = "Name must be between 5 and 25")
 	@NotNull
@@ -22,6 +24,21 @@ public class Offer {
 	
 	
 	
+	
+	
+	public Offer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Offer(@Size(min = 5, max = 25, message = "Name must be between 5 and 25") @NotNull String name,
+			@NotNull @Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a Valid Email Address") String email,
+			String text, String location) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.text = text;
+		this.location = location;
+	}
 	public String getLocation() {
 		return location;
 	}

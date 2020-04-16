@@ -30,6 +30,14 @@
   			  classpath:advancedBeans/security-context.xml
   </param-value>
   </context-param>
+  
+  <!-- Added New One -->
+  <context-param>
+  <param-name>spring.profiles.active</param-name>
+  <param-value>production</param-value>
+  </context-param>
+  
+  
   <filter>
     <display-name>springSecurityFilterChain</display-name>
     <filter-name>springSecurityFilterChain</filter-name>

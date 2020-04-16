@@ -12,12 +12,12 @@
 
 	
 	<context:annotation-config></context:annotation-config>
-	<context:component-scan base-package="dao"></context:component-scan>
+	<context:component-scan base-package="test"></context:component-scan>
 	
-	<context:property-placeholder location="classpath:/properties/jdbc.properties"  />
+	<context:property-placeholder location="com/kushkumardhawan/test/config/jdbc.properties"  />
 
-<!-- Production Environment -->
-	<beans profile="production">
+<!-- development Environment -->
+	<beans profile="dev">
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
