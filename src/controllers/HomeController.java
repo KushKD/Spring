@@ -72,14 +72,7 @@ public class HomeController {
 //		return ResponseEntity.ok(map);
 //	}
 	
-	@RequestMapping( method = RequestMethod.GET , value="/moffers", produces = "application/json")
-	public Map<String, Object> getOffers(){
-		
-		  Map<String,Object> map = new HashMap<String, Object>();
-		  map.put("Kush Dhawan", "Json");System.out.println("We are here moffers");
-		 
-		return map;
-	}
+	
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/root" )
 	public String showRoot(Model mv) {
