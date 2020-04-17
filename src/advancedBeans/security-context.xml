@@ -22,7 +22,7 @@
 			<!-- <security:password-encoder hash="bcrypt"
 				ref="passwordEncoder" /> -->
 			<security:jdbc-user-service data-source-ref="dataSource"
-				authorities-by-username-query='SELECT users.username , roles.rname as role  FROM bo_user as users   INNER JOIN bo_roles as roles ON roles.u_id = users.uid WHERE users.username = ?'
+				authorities-by-username-query='SELECT users.username , users.uid, roles.rname as role  FROM bo_user as users   INNER JOIN bo_roles as roles ON roles.u_id = users.uid WHERE users.username = ?'
 				users-by-username-query="select username ,password, isactive  from bo_user where username = ? "
 				id="jdbcDataSource" />
 			<security:password-encoder ref="passwordEncoder"
@@ -34,13 +34,16 @@
 	
 	<security:http use-expressions="true">
 		<security:intercept-url access="permitAll" pattern="/" />
-		<security:intercept-url access="hasAuthority('Admin')" pattern="/admin" />
-		<security:intercept-url access="hasAuthority('Root')" pattern="/root" />
-			<security:intercept-url access="permitAll" pattern="/login" />
+		<security:intercept-url access="permitAll" pattern="/login" />
 			<security:intercept-url access="permitAll" pattern="/logout" />
 			<security:intercept-url access="permitAll" pattern="/createUser" />
 			<security:intercept-url access="permitAll" pattern="/userCreated" />
 			<security:intercept-url access="permitAll" pattern="/register" />
+			<security:intercept-url access="permitAll" pattern="/message" />
+			<security:intercept-url access="permitAll" pattern="/moffers" />
+		<security:intercept-url access="hasAuthority('Admin')" pattern="/admin" />
+		<security:intercept-url access="hasAuthority('Root')" pattern="/root" />
+			
 			<security:intercept-url access="isAuthenticated()" pattern="/create" />
 			<security:intercept-url access="isAuthenticated()" pattern="/show" />
 			<security:intercept-url access="isAuthenticated()" pattern="/createOffer" />

@@ -1,8 +1,10 @@
 package controllers;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +13,8 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,12 +22,10 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import dao.OfferDao;
 import dao.OfferDaoImpl;
 import entities.Address;
-import entities.Customer;
 import entities.Name;
 import entities.Offers;
 import entities.Roles;
@@ -58,6 +60,27 @@ public class HomeController {
 		return "showOffers";
 	}
 	
+	
+//	@RequestMapping( method = RequestMethod.GET , value="/moffers", produces = "application/json")
+//	//@GetMapping(value="/moffers")
+//	public ResponseEntity<?> getOffers(){
+//		//Map<String, Object>
+//		
+//		  Map<String,Object> map = new HashMap<String, Object>();
+//		  map.put("Kush Dhawan", "Json");System.out.println("We are here moffers");
+//		 
+//		return ResponseEntity.ok(map);
+//	}
+	
+	@RequestMapping( method = RequestMethod.GET , value="/moffers", produces = "application/json")
+	public Map<String, Object> getOffers(){
+		
+		  Map<String,Object> map = new HashMap<String, Object>();
+		  map.put("Kush Dhawan", "Json");System.out.println("We are here moffers");
+		 
+		return map;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/root" )
 	public String showRoot(Model mv) {
 	
@@ -82,8 +105,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/create" )
-	public String createHome(Model mv) {
+	public String createHome(Model mv , Principal principal) {
 		mv.addAttribute("offer", new Offer());
+		System.out.println(principal.getName());  //Getting the Username of the logged in user
+		
 		return "createOffer";
 	}
 	
@@ -163,6 +188,9 @@ public class HomeController {
 		
 		return "userCreated";
 	}
+	
+	
+	
 	
 	Date modifyDateLayout(String inputDate) throws ParseException{
 	    Date date = new SimpleDateFormat("dd-MM-yyyy").parse(inputDate);

@@ -59,4 +59,8 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/userCreated.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="showContactForm" extends="basetemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/contact.jsp"></put-attribute>
+	</definition>
+	
 	</tiles-definitions>
