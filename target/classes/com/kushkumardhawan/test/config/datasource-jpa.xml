@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.11.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="test"></context:component-scan>
+	<jpa:repositories base-package="dao.repositories" entity-manager-factory-ref="entityManagerFactory" />
+
+	<context:property-placeholder
+		location="com/kushkumardhawan/test/config/jdbc.properties" />
+
+	<!-- development Environment -->
+	<beans profile="dev">
+
+		<bean id="dataSource"
+			class="org.apache.commons.dbcp.BasicDataSource"
+			destroy-method="close">
+			<property name="username" value="${jdbc.username}"></property>
+			<property name="password" value="${jdbc.password}"></property>
+			<property name="url" value="${jdbc.url}"></property>
+			<property name="driverClassName" value="${jdbc.driver}"></property>
+			<property name="removeAbandoned" value="true" />
+			<property name="removeAbandonedTimeout" value="300" />
+			<property name="logAbandoned" value="false" />
+			<property name="initialSize" value="1" />
+			<property name="maxActive" value="-1" />
+			<property name="maxIdle" value="8" />
+			<property name="validationQuery" value="select 1" />
+		</bean>
+
+
+		
+
+
+
+		<bean id="hibernateJpaVendorAdapter"
+			class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+
+		<bean id="entityManagerFactory"
+			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+			<property name="dataSource" ref="dataSource" />
+			<property name="jpaVendorAdapter"
+				ref="hibernateJpaVendorAdapter" />
+			<property name="jpaProperties">
+				<props>
+					<prop key="spring.jpa.hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+					<prop key="hibernate.show_sql">true</prop>
+                    <prop key="hibernate.format_sql">true</prop>
+				    <prop key="hibernate.hbm2ddl.auto">create</prop>
+				</props>
+			</property>
+			<!-- Set base package of your entities -->
+			<property name="packagesToScan" value="entities" />
+			 <property name="persistenceProvider">
+            <bean class="org.hibernate.jpa.HibernatePersistenceProvider"></bean>
+        </property>
+
+		</bean>
+
+		<!-- Configure the ansansaction manager bean -->
+		<bean id="transactionManager"
+			class="org.springframework.orm.jpa.JpaTransactionManager">
+			<property name="dataSource" ref="dataSource" />
+		</bean>
+		
+		<tx:annotation-driven transaction-manager="transactionManager" />
+
+	</beans>
+</beans>

@@ -20,7 +20,7 @@ import model.Offer;
 @ActiveProfiles("dev")
 @ContextConfiguration(locations ={"classpath:advancedBeans/dao-context.xml",
 								  "classpath:advancedBeans/security-context.xml" ,
-								  "classpath:com/kushkumardhawan/test/config/datasource.xml"} )
+								  "classpath:com/kushkumardhawan/test/config/datasource-dao.xml"} )
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserTests {
 	

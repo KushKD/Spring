@@ -3,10 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd 
-		http://www.springframework.org/schema/tx 
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.11.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 		   
 
 
@@ -14,9 +15,11 @@
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="test"></context:component-scan>
 	
+	
+	 
 	<context:property-placeholder location="com/kushkumardhawan/test/config/jdbc.properties"  />
 
-<!-- development Environment -->
+<!-- Production Environment -->
 	<beans profile="dev">
 	
 	<bean id="dataSource"
@@ -53,7 +56,7 @@
 <!-- 				<prop key="hibernate.hbm2ddl.auto">create </prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				 <!--   <prop key="hibernate.hbm2ddl.auto">create</prop>  -->
+				   <prop key="hibernate.hbm2ddl.auto">update</prop> 
 				 
 				<!-- <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_second_level_cache">true</prop>
@@ -70,6 +73,11 @@
 	
 	
 	 <tx:annotation-driven transaction-manager="transactionManager" /> 
+	 
+	 
+	
+
+
 	 
 	 </beans>
 </beans>
