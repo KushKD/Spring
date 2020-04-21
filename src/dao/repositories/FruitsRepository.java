@@ -15,6 +15,8 @@ public interface FruitsRepository extends CrudRepository<Fruits, Integer> {
 	
 	
 	List<Fruits> findByFruitname(String fruitname); 
+	List<Fruits> findByFruitnameAndFruitdesc(String fruitname, String fruitdesc ); 
+	List<Fruits> findByFruitdescContains(String fruitdesc);
 	 
 
 }

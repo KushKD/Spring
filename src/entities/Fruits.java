@@ -24,7 +24,7 @@ public class Fruits {
 	private String fruitname;
 
 	@Column(name = "fruit_desc")
-	private String fruit_desc;
+	private String fruitdesc;
 
 	public Fruits() {
 		super();
@@ -33,7 +33,7 @@ public class Fruits {
 	public Fruits(String fruit_name, String fruit_desc) {
 		super();
 		this.fruitname = fruit_name;
-		this.fruit_desc = fruit_desc;
+		this.fruitdesc = fruit_desc;
 	}
 
 	public Integer getId() {
@@ -53,16 +53,16 @@ public class Fruits {
 	}
 
 	public String getFruit_desc() {
-		return fruit_desc;
+		return fruitdesc;
 	}
 
 	public void setFruit_desc(String fruit_desc) {
-		this.fruit_desc = fruit_desc;
+		this.fruitdesc = fruit_desc;
 	}
 
 	@Override
 	public String toString() {
-		return "Fruits [id=" + id + ", fruit_name=" + fruitname + ", fruit_desc=" + fruit_desc + "]";
+		return "Fruits [id=" + id + ", fruit_name=" + fruitname + ", fruit_desc=" + fruitdesc + "]";
 	}
 
 }

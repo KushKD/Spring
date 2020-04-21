@@ -41,6 +41,20 @@ public class FruitsTests {
 		  System.err.println(fruits.get(0).getFruit_desc());
 	  
 	  }
+	  
+	  @Test public void testFruitsByNameAndDesc() { 
+		  List<Fruits> fruits = fruit_repository.findByFruitnameAndFruitdesc("Pulm", "Nippa Virus Man");
+		  fruits.forEach(f->System.out.println(f.getFruit_desc())); 
+		  System.err.println(fruits.get(0).getFruit_desc());
+	  
+	  }
+	  
+	  @Test public void testFruitsContains() { 
+		  List<Fruits> fruits = fruit_repository.findByFruitdescContains("Nippa");
+		  fruits.forEach(f->System.out.println(f.getFruit_desc())); 
+		  System.err.println(fruits.get(0).getFruit_desc());
+	  
+	  }
 	 
 	
 
