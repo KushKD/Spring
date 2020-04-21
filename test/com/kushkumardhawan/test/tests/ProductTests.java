@@ -35,7 +35,7 @@ public class ProductTests {
 	@Test
 	public void testcreateProduct() {
 
-		Products product = new Products("IBM5", "CRUD", "80,000");
+		Products product = new Products("SEX", "CRUD", "80,000");
 		product_repository.save(product);
 		System.out.println(product_repository.save(product));
 		

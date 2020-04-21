@@ -46,7 +46,7 @@
 		<bean id="hibernateJpaVendorAdapter"
 			class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 
-		<bean id="tyManagertyManagerFactory"
+		<bean id="entityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 			<property name="dataSource" ref="dataSource" />
 			<property name="jpaVendorAdapter"
@@ -56,8 +56,13 @@
 					<prop key="spring.jpa.hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 					<prop key="hibernate.show_sql">true</prop>
                     <prop key="hibernate.format_sql">true</prop>
-				   <!--  <prop key="hibernate.hbm2ddl.auto">create</prop> -->
-				</props>
+                  <!--   <prop key="hibernate.ejb.use_class_enhancer">true</prop> -->
+				  <!-- <prop key="hibernate.hbm2ddl.auto">create</prop>  -->
+				
+				 
+			
+				   	</props>
+				   	
 			</property>
 			<!-- Set base package of your entities -->
 			<property name="packagesToScan" value="entities" />
@@ -75,5 +80,8 @@
 		
 		<tx:annotation-driven transaction-manager="transactionManager" />
 
+
+
+ 
 	</beans>
 </beans>

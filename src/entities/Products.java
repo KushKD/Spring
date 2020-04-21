@@ -8,11 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="products")
 public class Products {
 
 	@Id
+	
+	/*
+	 * Generated ID Custom Generator
+	 * @GenericGenerator(name="product_id", strategy = "entities.CustomRandomGenerator")
+	 * @GeneratedValue(generator = "product_id")
+	 */
+	
 	@GeneratedValue(generator="products_id_seq",strategy=GenerationType.AUTO)
 	@SequenceGenerator(name="products_id_seq",sequenceName="public.products_id_seq", initialValue = 1, allocationSize = 1)
 	@Column(name="id")
