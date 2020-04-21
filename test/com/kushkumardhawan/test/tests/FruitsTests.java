@@ -25,7 +25,7 @@ public class FruitsTests {
 	@Test
 	public void testcreateFruit() {
 
-		Fruits fruit = new Fruits( "Pulm", "Nippa Virus Man");
+		Fruits fruit = new Fruits( "Banana", "Makes you always laugh !!");
 		fruit_repository.save(fruit);
 		System.out.println(fruit_repository.save(fruit));
 		
