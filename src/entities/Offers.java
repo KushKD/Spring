@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Offers {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "offers_id_seq")
+
 	@GeneratedValue(generator="offers_id_seq",strategy=GenerationType.AUTO)
 	@SequenceGenerator(name="offers_id_seq",sequenceName="public.offers_id_seq", initialValue = 1, allocationSize = 1)
 	@Column(name="id")

@@ -1,0 +1,38 @@
+
+Discriminator Coulumn such as PMode , CC, CH
+
+@Inheritence    [@Inheritance(strategy = InheritanceType.SINGLE_TABLE)]
+@DiscriminatorColumn  [@DiscriminatorColumn(name="pmode", discriminatorType = DiscriminatorType.STRING)]   Parent
+@DiscriminatorValue  Child (cc (card),ch [cheque])
+
+CREATE TABLE payment (
+id serial PRIMARY KEY, 
+pmode  character varying(2),
+amount decimal(8,3),
+cardnumber  character varying(20),
+checknumber  character varying(20)
+);
+
+
+
+Tables Per Class (It improves performance but is not recoomended as duplicates the columns across tables against Normalisation)
+Seperate Tables for all the entities
+ 
+ CreditCard (id, amount, cardnumber)
+  Check (id, amount, check)
+  Patment (id,amount)
+
+  
+Most Important and most used Stratergy 
+Joined
+
+PArent Class 
+@Inheritence    [@Inheritance(strategy = InheritanceType.Joined)] 
+
+Child Classes
+@PrimaryKeyJoinedColumn(name="id")
+
+
+===========Component Mapping (Composition)
+@Embedded in Parnet Class
+@Embeddable in Chile class
