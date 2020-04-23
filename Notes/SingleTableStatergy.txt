@@ -36,3 +36,30 @@ Child Classes
 ===========Component Mapping (Composition)
 @Embedded in Parnet Class
 @Embeddable in Chile class
+
+
+================== MAny To  Many Associations ==========================
+create table programmer(
+id SERIAL PRIMARY KEY ,
+name character varying(20),
+salary integer
+)
+
+create table project(
+id SERIAL PRIMARY KEY ,
+name character varying (20)
+)
+
+create table programmers_projects(
+id SERIAL PRIMARY KEY,	
+programmer_id integer,
+project_id integer,
+FOREIGN KEY (programmer_id)
+REFERENCES programmer(id),
+FOREIGN KEY (project_id)
+REFERENCES project(id)
+)
+
+select * from programmer
+select * from project
+select * from programmers_projects
