@@ -4,6 +4,10 @@ package com.kushkumardhawan.test.tests;
 
 import java.util.HashSet;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +25,14 @@ public class ProgrammerProjectTest {
 	
 	@Autowired
 	ProjectsProgrammersRepository repository;
+	
+	@Autowired
+	EntityManager entityManager;
+	
+	@Before
+	public void init() {
+		Session session = entityManager.unwrap(Session.class); 
+	}
 	
 	@Test
 	public void createEmployee() {
