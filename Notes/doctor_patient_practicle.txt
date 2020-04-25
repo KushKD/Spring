@@ -1,0 +1,41 @@
+		CREATE TABLE doctors(
+		d_id SERIAL PRIMARY KEY NOT NULL,
+		fname character varying (15),
+		mname character varying (15),
+		lname character varying (15),
+		speciality character varying (30)
+		
+		)
+		
+		CREATE TABLE patients(
+		p_id SERIAL PRIMARY KEY NOT NULL,
+		fname character varying (15),
+		mname character varying (15),
+		lname character varying (15)
+		
+		)
+		
+		CREATE TABLE patients_doctors(
+		id SERIAL PRIMARY KEY NOT NULL,
+		d_id INTEGER NOT NULL,
+		p_id INTEGER NOT NULL,  
+		FOREIGN KEY (d_id) REFERENCES doctors(d_id),
+		FOREIGN KEY (p_id) REFERENCES patients(p_id)
+		)
+		
+		CREATE TABLE appoinments(
+		a_id  SERIAL PRIMARY KEY NOT NULL,
+		p_id INTEGER NOT NULL,
+		d_id INTEGER NOT NULL,
+		appoinmnet_time timestamp NOT NULL,
+		started boolean DEFAULT false, 
+		ended boolean DEFAULT false,
+		FOREIGN KEY (d_id) REFERENCES doctors(d_id),
+		FOREIGN KEY (p_id) REFERENCES patients(p_id)
+		
+		)
+		
+		SELECT * FROM doctors;
+		SELECT * FROM patients;
+		SELECT * FROM appoinments;
+		SELECT * FROM patients_doctors;
