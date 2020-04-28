@@ -34,6 +34,7 @@
 	
 	<security:http use-expressions="true">
 		<security:intercept-url access="permitAll" pattern="/" />
+		<security:intercept-url access="permitAll" pattern="/services/**" />
 		<security:intercept-url access="permitAll" pattern="/login" />
 			<security:intercept-url access="permitAll" pattern="/logout" />
 			<security:intercept-url access="permitAll" pattern="/createUser" />

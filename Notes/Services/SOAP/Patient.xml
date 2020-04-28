@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<anything:patient xmlns:anything="http://www.kushkumardhawan.org/Patient" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kushkumardhawan.org/Patient Patient.xsd ">
+  <anything:id>2</anything:id>
+  <anything:name>Kush</anything:name>
+  <anything:age>30</anything:age>
+  <anything:dob>2001-01-01</anything:dob>
+  <anything:eamil>kd@g.com</anything:eamil>
+  <anything:gender>M</anything:gender>
+  <anything:phone>2657651</anything:phone>
+  <anything:payment>
+    <anything:Insurance>
+    	<anything:limit>100000</anything:limit>
+    	<anything:provider>1</anything:provider>
+    </anything:Insurance>
+  </anything:payment>
+</anything:patient>

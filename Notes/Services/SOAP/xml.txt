@@ -1,0 +1,135 @@
+XML == Extensible Markup language
+Allows us to make our own mark up language
+
+Adventages
+Custom Markup like <orderid>
+It carries both the data and the mata data
+We can provide Validation Rules
+XML can be used as an Configuration file
+Save the data, Manupilate the Data and Present the data
+
+
+XSD
+Is the Grammer and Blueprint for the XML Document
+	Elements
+	Attributes
+	Namespace
+	Order
+	Number of Occurences
+	Restrictions
+	
+XML Follows XSD isValid
+XSD has a 	.xsd Extention
+	
+E.g
+We can ave am ORDER.xml and ORDER.XSD
+
+NameSpaces
+Uniquly Identify the XML Components
+targetNamespace
+
+Prefix: xmlns:amnz="http://amazon.com/ordrs>
+
+XML SCHEMA USE CASE
+
+
+WHEN TO USE A SOAP WEB SERVICE:
+Form Contract is Required  ---- WSDL
+
+SOAP (Simple Object Access Protocol) Current Version of Soap is 1.2
+ <soap:Envolop>  root element
+  	<soap:header>  used to send the meta element
+  		<soap:body>  main body
+  				<creditcard></creditcard>
+  				
+ Faliure Message
+  <soap:fault>
+  	<soap:code>  errro was on te client side or service side
+  	 <soap:reason> 
+  	    <soap:text> Card Expired> </soap:text>
+  	    
+  	    
+  	    
+  	    
+WSDL : Web Services Desription Language Also, Contract Betwwn the Provider and Consumer
+What this Web service Provises and how it provides it
+
+defination
+		types
+		messaes  
+		operations
+		porttype
+		binding
+
+Which WSDL to USe
+
+
+
+Two Approches to Develop SOAP Services
+Top Down  WSDL and Contract First
+	Generate the JAVA stubs using tools like wsdl2java
+	Iplement the Webservice EndPoint
+
+Bottom up  Code First Approach
+
+
+
+JAX WS
+Specification  CXF,glassFish
+API  Annotations and Developers Set of Annotations
+
+@javax.jws.WebService  == Mark Class or Interface as Endpoint
+@javax.jws.WebMethod,WebParam  ==  Mark Web Method as EndPoint
+@javax.xml.ws.WebFault  == Creating Custom Annotations
+@javax.xml.Soap.SoapBinding
+
+
+JAXB (Java Architecture for XML Binding) Version 2.2  org.jvnet
+Allows to Deal with XML with Less Complexicty
+  XJC TOOL converts the XML Schema to Java Classes
+  SCHEMGEN TOOL Converts XML Schema from JAVA Classes 
+  These two tools works at compile time
+  In Runtime
+
+
+XML Schem to JAXB Classes
+
+		Create the Project
+		Create the Schema Files
+		Use the JAXB Plugin
+		Use the Plugin to genetrate the stubs to serialise and deserialise
+
+
+
+
+
+Marshling  converting xml to java objects
+UnMarshling  converting java objects to XML
+
+
+JAX-WS
+APACHE-CSX implemets bothe the JAX-WS and the JAX-RS
+https://www.ibm.com/developerworks/library/ws-whichwsdl/index.html
+
+
+
+
+
+
+
+--Benifits CXF
+JAX-WS and Jax-Rs
+WISDL to JAva and Java to WISDL Tools
+Easy Spring Configuration
+SOAP Engine 
+Ws standards
+
+
+CReating the WISDL 
+Creating the Stubs
+
+
+
+
+
+

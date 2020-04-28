@@ -30,14 +30,10 @@
   			  classpath:advancedBeans/security-context.xml
   </param-value>
   </context-param>
-  
-  <!-- Added New One -->
   <context-param>
-  <param-name>spring.profiles.active</param-name>
-  <param-value>production</param-value>
+    <param-name>spring.profiles.active</param-name>
+    <param-value>production</param-value>
   </context-param>
-  
-  
   <filter>
     <display-name>springSecurityFilterChain</display-name>
     <filter-name>springSecurityFilterChain</filter-name>
@@ -47,4 +43,14 @@
     <filter-name>springSecurityFilterChain</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>cxf</display-name>
+    <servlet-name>cxf</servlet-name>
+    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cxf</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
 </web-app>

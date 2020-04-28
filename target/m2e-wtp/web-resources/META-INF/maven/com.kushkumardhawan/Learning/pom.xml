@@ -23,6 +23,30 @@
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.14.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>  
+					</execution>
+				</executions>
+
+				<configuration>
+					<schemaDirectory>${project.basedir}/xsd</schemaDirectory>
+					<schemaIncludes>
+						<include>Patient.xsd</include>
+					</schemaIncludes>
+					<bindingDirectory>${project.basedir}/xsd</bindingDirectory>
+					<bindingIncludes>
+						<include>global.xjb</include>
+					</bindingIncludes>
+					<generateDirectory>${project.basedir}/src</generateDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -188,6 +212,22 @@
 		 	<groupId>org.springframework.data</groupId>
 		 	<artifactId>spring-data-jpa</artifactId>
 		 	<version>2.2.4.RELEASE</version>
+		 </dependency>
+
+		 <dependency>
+		 	<groupId>org.apache.cxf</groupId>
+		 	<artifactId>cxf-rt-frontend-jaxws</artifactId>
+		 	<version>3.3.6</version>
+		 </dependency>
+		 <dependency>
+		 	<groupId>org.apache.cxf</groupId>
+		 	<artifactId>cxf-rt-transports-http</artifactId>
+		 	<version>3.3.6</version>
+		 </dependency>
+		 <dependency>
+		 	<groupId>org.apache.cxf</groupId>
+		 	<artifactId>cxf-rt-ws-security</artifactId>
+		 	<version>3.3.6</version>
 		 </dependency>
 	</dependencies>
 </project>
